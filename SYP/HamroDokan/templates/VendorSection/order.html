@@ -1,0 +1,92 @@
+{% extends 'Partials/base.html'%}
+{% block title %}Orders Page{% endblock %}
+{% block content %}
+
+  <!--Topside-->
+  <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Information
+                </div>
+                <div class="card-body">
+                    <marquee behavior="" direction="">
+                        <h3 class="my-4">This is the Information</h3>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Statistics
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{%url 'originalvendor'%}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Stores <i class="fas fa-box"></i></h4>
+                                    <h3>{{ storecount }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{%url 'vendororder'%}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Orders <i class="fas fa-shipping-fast"></i></h4>
+                                    <h3>{{ ordercount }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Topside-->
+
+   <!--Table-->
+   <div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-9 mx-auto" >
+            <table class="table bg-white">
+                <thead class="bg-custom">
+                    <tr class="text-white">
+                        <th scope="col">Shop</th>
+                        <th scope="col">Items</th>
+                        <th scope="col">Ordered by</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for orders in orders %}
+                    <tr>
+                        <td>{{ orders.productmodel }}</td>
+                        <td>{{ orders.nameofquantity}}</td>
+                        <td>{{ orders.staffmodel }}</td>
+                        <td>{{ orders.orderquantity}}</td>
+                        <td>{{ orders.dates }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!--End Table-->
+{% endblock %}
+
+<style>
+    .bg-custom {
+        background-color: #676a7c;
+    }
+</style>

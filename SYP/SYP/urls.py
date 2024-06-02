@@ -1,0 +1,45 @@
+"""
+URL configuration for SYP project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+
+from django.contrib import admin
+from django.urls import path, include
+from HamroDokan import views
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.signuppage, name='signup'),
+    path('login/', views.loginpage,name='login'),
+    path('about/', views.aboutmepage,name='aboutme'),
+    path('terms/', views.termspage,name='terms'),
+    path('home/', views.homepage,name='home'),
+    path('logout/', views.logoutpage,name='logout'),
+    # This is vendor section
+    
+    path('user/order/', views.indexpage,name='userorder'),
+    path('staff/', views.staffpage,name='vendorstaff'),
+    path('staff/detail/<int:pk>/', views.staff_detail,name='staffdetail'),
+    path('vendor/', views.vendorpage,name='originalvendor'),
+    path('vendor/delete/<int:pk>/', views.productdeletepage,name='productdelete'),    
+    path('vendor/update/<int:pk>/', views.productupdatepage,name='productupdate'),
+    path('vendor/order/', views.orderpage,name='vendororder'),
+    path('profile/', views.profilepage,name='userprofile'),
+    path('profile/update/', views.profilepage_update,name='userprofile-update'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

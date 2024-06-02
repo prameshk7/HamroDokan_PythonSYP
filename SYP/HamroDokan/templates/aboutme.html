@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <link rel="stylesheet" href="{% static 'aboutme.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="Home">
+        <div class="nav-logo">
+            <a href="{% url 'home' %}" class="logo-link">
+                <p>Hamro Dokan</p>
+                <img src="{% static "loginimg/store.png" %}" alt="Hamro Dokan Logo"><!--logo image here-->
+            </a>
+        </div>
+        <div class="detail">
+            <h1>Hi, I am <span> Pramesh </span></h1>
+            <p>I specialize in crafting attractive UI designs that increases user engagement<br> and provides a pleasurable surfing experience.<br>
+                If you require eye-catching designs and smooth-running websites, then<br> I am an expert in UI/UX design and web development.<br> I build aesthetically beautiful interfaces and engaging user experiences<br> with an emphasis on user-centered design.<br> From startups to established businesses,I use the latest design trends<br> and technology to bring digital dreams to life.<br> Let's work together to build something extraordinary.
+        </div>
+
+        <div class="About">
+            <h1>About <span> HamroDokan </span></h1>
+            <p>HamroDokan is an innovative ecommerce platform <br> that aims to bridge the gap between vendors and customers.<br> We specialize in providing the local goods and services to local people. <br> HamroDokan provides a user-friendly interface for both vendors and customers,<br> facilitating smooth transactions and interactions. <br>With HamroDokan, vendors can easily showcase their products<br> and reach a wider audience, while customers can explore<br> a diverse range of products and make purchases conveniently<br> from the comfort of their homes.</p>
+            
+        </div>
+
+        <div class="images">
+            <img src="{% static 'loginimg/unnamed.png' %}"  class="shape">
+            <img src="{% static 'loginimg/pramesh.png' %}"  class="mine">
+        </div>
+
+        <div class="social">
+           <a href="https://chatwith.io/s/pramesh-katuwal"><i class="fab fa-whatsapp"></i></a>
+           <a href="https://www.instagram.com/pro_me_ss/"><i class="fab fa-instagram"></i></a>
+           <a href="https://www.facebook.com/Promess77"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+
+
+</body>
+</html>

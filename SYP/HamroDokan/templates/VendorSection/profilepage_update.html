@@ -1,0 +1,60 @@
+{% extends 'Partials/base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Update Profile
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ request.user.username }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ request.user.email }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{ profile.address }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ profile.phone }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control-file" id="image" name="image">
+                            {% if profile.image %}
+                            <img src="{{ profile.image.url }}" alt="Previous Image" style="max-width: 100px;">
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-custom">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .btn-custom {
+        background-color: #676a7c;
+        color: #fff; 
+        border: none; 
+    }
+</style>
+
+{% endblock %}
+
+<style>
+.bg-custom {
+    background-color: #676a7c;
+}
+</style>

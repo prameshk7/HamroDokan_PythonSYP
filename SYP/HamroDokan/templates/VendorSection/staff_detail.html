@@ -1,0 +1,79 @@
+{% extends 'Partials/base.html'%}
+{% load static%}
+{% block title %}Staff Page{% endblock %}
+{% block content %}
+{% comment %} Staaff not needed I think(replace with user) {% endcomment %}
+<!--Custome CSS-->
+<link rel="stylesheet" href="{% static "vendorstyle.css" %}">
+
+{% include 'Partials/topnav.html'%}
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Profile Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Profile Information</span>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    {% for workers in workers %}
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{workers.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>{{workers.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone</th>
+                                        <td>{{workers.profilemodel.phone}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Address</th>
+                                        <td>{{workers.profilemodel.address}}</td>
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            {% if workers.profilemodel.image %}
+                                <img class="img-thumbnail" src="{{ workers.profilemodel.image.url }}" alt="Profile Picture">
+                            {% else %}
+                                <img class="img-thumbnail" src="{% static 'loginimg/avatar.png' %}" alt="Default Profile Picture">
+                            {% endif %}
+                        </div>
+                        {%endfor%}                          
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!--End Table-->
+    <style>
+        
+        .btn-custom {
+            background-color: #676a7c;
+            color: #fff; 
+            border: none; 
+        }
+    </style>
+    
+{% endblock %}
+

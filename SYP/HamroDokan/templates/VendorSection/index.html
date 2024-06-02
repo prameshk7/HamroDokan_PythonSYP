@@ -1,0 +1,127 @@
+{% extends 'Partials/base.html'%}
+
+<!--Chartjs CDN-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+{% block title %}Vendor Dashboard{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+{% include 'Partials/topnav.html'%}
+
+    <!--Graphs-->
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-6">
+                <div class="bg-white">
+                    <canvas id="myChart1" width="400" height="300"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart1').getContext('2d');
+                        var myChart1 = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: [{% for order in orders %} '{{order.nameofquantity}}', {% endfor %}],
+                                datasets: [{
+                                    label: 'Orders',
+                                    data: [{% for order in orders %} {{order.orderquantity}}, {% endfor %}],
+                                    backgroundColor: [
+                                    'rgba(123, 91, 255, 1)',   
+                                    'rgba(85, 209, 86, 1)',   
+                                    'rgba(86, 209, 255, 1)',    
+                                    'rgba(75, 132, 192, 1)',    
+                                    'rgba(12, 82, 255, 1)',  
+                                    'rgba(64, 19, 255, 1)',   
+                                    'rgba(132, 99, 255, 1)',    
+                                    'rgba(54, 12, 235, 1)',     
+                                    'rgba(86, 206, 255, 1)',    
+                                    'rgba(10, 10, 10, 1)'       
+                                    
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(0, 0, 0, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-white">
+                    <canvas id="myChart" width="400" height="300"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: [{% for product in products %} '{{product.name}}', {% endfor %}],
+                                datasets: [{
+                                    label: 'Products',
+                                    data: [{% for order in orders %} {{order.orderquantity}}, {% endfor %}],
+                                    backgroundColor: [
+                                    'rgba(123, 91, 255, 1)',   
+                                    'rgba(85, 209, 86, 1)',   
+                                    'rgba(86, 209, 255, 1)',    
+                                    'rgba(75, 132, 192, 1)',    
+                                    'rgba(12, 82, 255, 1)',  
+                                    'rgba(64, 19, 255, 1)',   
+                                    'rgba(132, 99, 255, 1)',    
+                                    'rgba(54, 12, 235, 1)',     
+                                    'rgba(86, 206, 255, 1)',    
+                                    'rgba(10, 10, 10, 1)'
+                                    ],
+                                    borderColor: [
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Graphs-->
+{% else %}
+{% include 'VendorSection/staff_index.html' %}
+{% endif %}
+{% endblock %} 

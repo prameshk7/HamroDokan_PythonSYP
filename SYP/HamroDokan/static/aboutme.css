@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.Home{
+    position: relative;
+    width: 100%;
+    height: 130vh;
+    background: #ececec;
+    position: relative;
+}
+
+.nav{
+    display: flex;
+    width: 84%;
+    margin: auto;
+    padding: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+
+.nav-logo p{
+    color: #182145;
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-left: 100px;
+    display:flex;
+    cursor: pointer;
+
+
+}
+
+.nav-logo p:hover{
+    color: #ce0610;
+}
+
+.nav-logo img{
+    position: absolute;
+    width: 42px;
+    height: 40px;
+    margin-left: 40px;
+    margin-top: -40px;
+    
+}
+
+.logo-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    display: inline-block; /* Ensure block-level display for padding */
+}
+
+.logo-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+}
+
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #f44566;
+}
+
+.detail{
+    margin-left: 8%;
+    margin-top: 10%;
+}
+
+.detail h1{
+    font-size: 50px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+span{
+    color: #008950;
+    
+}
+
+.detail p{
+    color: #000;
+    line-height: 22px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.detail a{
+    background: #454e5a;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+.detail a:hover{
+    background: #f44566;
+}
+
+.About{
+    margin-left: 8%;
+    margin-top: 2%;
+}
+
+.About h1{
+    font-size: 50px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.About p{
+    color: #000;
+    line-height: 22px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+button{
+    background: #454e5a;
+    padding: 8px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+button:hover{
+    background: #f44566;
+}
+
+.popup{
+    display: none;
+    position:absolute;
+    z-index: 1;
+    left: 20%;
+    top: 65%;
+    transform: translate(-20%, -65%);
+    width: 250px;
+    padding: 30px;
+    text-align: center;
+    background-color: #f44566;
+    border-radius: 5%;
+} 
+.popup p{
+    color: #fff;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.close{
+    color: #000;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.close:hover, .close:focus{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.images{
+    width: 45%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}
+
+.images img{
+    height: 70%;
+    position: absolute;
+    left: 50%;
+    bottom: 20;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+    border-radius: 5%;
+}
+
+.images:hover .shape{
+    bottom: 230px;
+}
+
+.images:hover .mine{
+    left: 45%;
+}
+
+.social{
+    margin-left: 8%;
+    margin-top: 100px;
+}
+
+.social a{
+    font-size: 30px;
+    color: #212121;
+    margin-right: 20px;
+}
+
+.social a:hover{
+    color: #f44566;
+}

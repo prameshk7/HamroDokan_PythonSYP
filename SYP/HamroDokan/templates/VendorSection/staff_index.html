@@ -1,0 +1,63 @@
+
+
+<div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Make your Order request here
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input class="btn btn-custom btn-block" type="submit" value="Request Orders">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Order Records
+                </div>
+                <div class="card-body">
+                    <table class="table bg-white">
+                        <thead class="bg-custom text-white">
+                            <tr>
+                                <th scope="col">Shop Name</th>
+                                <th scope="col">Items</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            {% if order.staffmodel == user %}
+                            <tr>
+                                <td>{{order.productmodel.name}}</td>
+                                <td>{{order.nameofquantity}}</td>
+                                <td>{{order.orderquantity}}</td>
+                                <td>{{order.dates}}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .btn-custom {
+        background-color: #676a7c;
+        color: #fff; 
+        border: none; 
+    }
+
+.bg-custom {
+    background-color: #676a7c;
+}
+</style>

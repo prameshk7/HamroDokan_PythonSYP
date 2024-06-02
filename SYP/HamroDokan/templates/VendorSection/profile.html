@@ -1,0 +1,79 @@
+{% extends 'Partials/base.html'%}
+{% load static %}
+{% block title %}Vendor Dashboard{% endblock %}
+{% block content %}
+
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-custom text-white">
+                        Profile Page
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <span class="h4"> Profile Information</span> <a class="btn btn-custom btn-sm float-right"
+                                    href="{% url 'userprofile-update' %}">Edit</a>
+                                <hr>
+                                <table class="table bg-white table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Name</th>
+                                            <td>{{user.username}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td>{{user.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Phone</th>
+                                            <td>{{user.profilemodel.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address</th>
+                                            <td>{{user.profilemodel.address}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col-md-4">
+                                {% if user.profilemodel.image %}
+                                    <img class="img-thumbnail" src="{{ user.profilemodel.image.url }}" alt="Profile Picture">
+                                {% else %}
+                                    <img class="img-thumbnail" src="{% static 'loginimg/defavatar.png' %}" alt="Default Profile Picture">
+                                {% endif %}
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--End Table-->
+    <style>
+
+        .btn-custom {
+            background-color: #676a7c;
+            color: #fff; 
+            border: none; 
+        }
+    </style>
+    
+{% endblock %}
+
+<style>
+    .bg-custom {
+        background-color: #676a7c;
+    }
+</style>

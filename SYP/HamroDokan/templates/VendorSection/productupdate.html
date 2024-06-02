@@ -1,0 +1,27 @@
+{% extends 'Partials/base.html'%}
+{% block title %}Orders Page{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border">
+                <h3>Update Shops</h3>
+                <hr>
+                <form method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {{form.as_p }}
+                    <a class = "btn btn-secondary" href="{% url 'originalvendor' %}">Cancel</a>
+                    <input class="btn btn-custom" type="submit" value=Update>
+                </form>
+            </div>
+        </div>
+    </div>        
+</div>                
+<style>
+.btn-custom {
+background-color: #676a9c;
+color: #fff; /* Text color */
+border: none; /* Remove borders */
+}
+</style>
+{% endblock %}

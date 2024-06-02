@@ -1,0 +1,443 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script async="" charset="UTF-8" src="https://embed.tawk.to/_s/v4/app/660147be42c/languages/en.js"></script>
+    <title>Home</title>
+    <style>
+        /* Your CSS styles here */
+        /* POPPINS FONT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        body{
+            background-color: #676a7c;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+
+        }
+
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 100vh;
+            background: rgba(39, 39, 39, 0.4);
+            overflow-x: hidden; 
+        }
+
+        .nav{
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39,39,39, 0.6), transparent);
+            z-index: 100;
+        }
+
+        .nav-logo p{
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+            margin-left: 45px;
+            display:flex;
+            cursor: pointer;
+
+        }
+
+        .nav-logo p:hover{
+            color: #182145;
+        }
+
+        .nav-logo img{
+            position: absolute;
+            width: 42px;
+            height: 40px;
+            margin-right: 10px;
+            top: 20px;
+        }
+
+        .nav-menu ul{
+            display: flex;
+        }
+
+        .nav-menu ul li{
+            list-style-type: none;
+        }
+
+        .nav-menu ul li .link{
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+
+        .link:hover, .active{
+            border-bottom: 2px solid #fff;
+        }
+
+        .nav-menu-btn{
+            display: none;
+        }
+
+
+        .container {
+            width: 100%; /* Set width to 100% */
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow-y: auto; /* Enable vertical scrolling */
+            height: calc(101vh - 250px); /* Adjust based on your design */
+            margin-top: 170px; /* Adjust margin-top based on your design */
+            margin-bottom: 50px; /* Adjust margin-bottom based on your design */
+        }
+        
+        
+
+        .container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container p1 {
+            color: #000;
+            font-weight: bold;
+            font-size:small;
+        }
+
+        .container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+
+        .container ul li strong {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container ul li p {
+            color: #666;
+        }
+
+        .container ul li {
+         display: flex; /* Use flexbox for layout */
+         flex-direction: column; /* Align items vertically */
+         align-items: center; /* Center items horizontally */
+         margin-bottom: 10px;
+         padding: 30px;
+         border-radius: 5px;
+         background-color: #f9f9f9;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+         
+     }
+     
+     .container ul li img {
+         max-width: 300px; /* Ensure image fits within the container */
+         margin-top: 10px; /* Adjust vertical spacing as needed */
+         margin-bottom: 10px; /* Adjust vertical spacing as needed */
+     }
+     
+
+    .search-container {
+         position: absolute;
+         top: 100px;
+         left: 50%; 
+         transform: translateX(-50%); 
+         display: flex;
+         align-items: center;
+         background-color: #fff;
+         padding: 5px;
+         border-radius: 5px;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+         z-index: 1; 
+     }
+     
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 0.5fr);
+            gap: 30px;
+        }
+        
+        .product-item {
+            list-style: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+   
+        .logo-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit text color */
+            display: inline-block; /* Ensure block-level display for padding */
+        }
+    
+        .logo-link:hover {
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+        .whatsapp-link {
+            text-decoration: none; /* Remove underline */
+        }
+        
+        .whatsapp-button {
+            padding: 8px 15px;
+            background-color: #25D366; /* WhatsApp green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E; /* Darker shade of WhatsApp green on hover */
+        }
+        
+        .whatsapp-button i {
+            margin-left: 5px; /* Add some spacing between text and icon */
+        }
+        
+
+        @media only screen and (max-width: 786px){
+            .nav-menu-btn{
+                display: block;
+            }
+            .nav-menu.responsive{
+                top: 100px;
+            }
+            .nav-menu{
+                position: absolute;
+                top: -800px;
+                display: flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.2);
+                width: 100%;
+                height: 90vh;
+                backdrop-filter: blur(20px);
+                transition: .3s;
+            }
+            .nav-menu ul{
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-menu-btn i{
+                font-size: 25px;
+                color: #fff;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: .3s;
+            }
+            .nav-menu-btn i:hover{
+                background: rgba(255, 255, 255, 0.15);
+            }
+
+           
+            .container {
+                
+                max-width: 100%; 
+                margin: 100px 0 50px 0; 
+            }
+            
+            .container ul li {
+                display: flex; /* Use flexbox for layout */
+                flex-direction: column; /* Align items vertically */
+                align-items: center; /* Center items horizontally */
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                
+            }
+
+            .container ul li img {
+                max-width: 100%; /* Ensure image fits within the container */
+                margin-top: 10px; /* Adjust vertical spacing as needed */
+                margin-bottom: 10px; /* Adjust vertical spacing as needed */
+            }
+
+            .search-container {
+                position: absolute;
+                top: 73px;
+                left: 50%; 
+                transform: translateX(-50%); 
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                padding: 5px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1; 
+            }
+            
+            .whatsapp-link {
+                text-decoration: none; 
+            }
+            
+            .whatsapp-button {
+                padding: 8px 15px;
+                background-color: #25D366;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            
+            .whatsapp-button:hover {
+                background-color: #128C7E; 
+            }
+            
+            .whatsapp-button i {
+                margin-left: 5px; 
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <a href="{% url 'home' %}" class="logo-link">
+                    <p>Hamro Dokan</p>
+                    <img src="{% static "loginimg/store.png" %}" alt="Hamro Dokan Logo"><!--logo image here-->
+                </a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="{%url 'userorder'%}" class="link">Orders</a></li>
+
+                    <li><a href="{%url 'userprofile'%}" class="link">{{user.username}} Profile</a></li>
+                    <li><a class="link" href="{%url 'logout'%}">Logout</a></li>
+                </ul>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+        <div class="container">
+            <h2>Shop Lists</h2>
+            <ul id="productList" class="product-grid">
+                {% for product in products %}
+                    <li class="product-item">
+                        <strong>{{ product.name }}</strong>
+                        {% if product.imageshop %}
+                        <img src="{{ product.imageshop.url }}" alt="Shop Image">
+                        {% endif %}
+                        <p1>{{ product.location }}</p1>
+                        <p>{{ product.description }}</p>
+                        {% if product.whatsapp_number %}
+                        <a href="https://wa.me/{{ product.whatsapp_number }}" target="_blank" class="whatsapp-link">
+                            <button class="whatsapp-button">Contact via WhatsApp <i class="bx bxl-whatsapp"></i></button></a>
+                        {% endif %}
+
+
+                    </li>
+                {% empty %}
+                    <li>No shops available.</li>
+                {% endfor %}
+            </ul>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Your JavaScript code here
+        function myMenuFunction() {
+            var navMenu = document.getElementById("navMenu");
+            if (navMenu.className === "nav-menu") {
+                navMenu.className += " responsive";
+            } else {
+                navMenu.className = "nav-menu";
+            }
+        }
+
+        function searchProducts() {
+            var input, filter, ul, li, strong, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("productList");
+            li = ul.getElementsByTagName('li');
+            for (var i = 0; i < li.length; i++) {
+                strong = li[i].getElementsByTagName("strong")[0];
+                txtValue = strong.textContent || strong.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/65effd908d261e1b5f6c41bf/1hoond09r';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+</body>
+</html>

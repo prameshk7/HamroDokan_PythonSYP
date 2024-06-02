@@ -1,0 +1,54 @@
+{% extends 'Partials/base.html'%}
+{% load static%}
+{% block title %}Staff Page{% endblock %}
+{% block content %}
+{% comment %} Staaff not needed I think(replace with user) {% endcomment %}
+<!--Custome CSS-->
+<link rel="stylesheet" href="{% static "vendorstyle.css" %}">
+
+{% include 'Partials/topnav.html'%}
+
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <table class="table bg-white">
+                    <thead class="bg-custom">
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for worker in workers %}
+                        <tr>
+                            <th scope="row"><a class="btn btn-custom btn-sm" href="{% url 'staffdetail' worker.id %}">View</a></th>
+                            <td>{{ worker.username }}</td>
+                            <td>{{ worker.email }}</td>
+                            <td>{{ worker.profilemodel.phone }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--End Table-->
+    <style>
+        
+        .btn-custom {
+            background-color: #676a7c;
+            color: #fff; 
+            border: none; 
+        }
+    </style>
+    
+{% endblock %}
+

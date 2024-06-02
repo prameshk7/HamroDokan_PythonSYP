@@ -1,0 +1,142 @@
+{% extends 'Partials/base.html'%}
+{% block title %}Vendor Page{% endblock %}
+
+{% block content %}
+
+   <!--Topside-->
+   <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Information
+                </div>
+                <div class="card-body">
+                    <marquee behavior="" direction="">
+                        <h3 class="my-4">This is Vendor Page</h3>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-custom text-white">
+                    Actions
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{%url 'originalvendor'%}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Stores <i class="fas fa-box"></i></h4>
+                                    <h3>{{ storecount }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="text-decoration-none text-dark" href="{%url 'vendororder'%}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Orders <i class="fas fa-shipping-fast"></i></h4>
+                                    <h3>{{ ordercount }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Topside-->
+
+
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+                <div class="border bg-white p-3">
+                    <h4>List Shops</h4>
+                    <hr>
+                    <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_name">Name:</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_location">Location:</label>
+                            {{ form.location }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_whatsapp">WhatsApp:</label>
+                            {{ form.whatsapp_number }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_description">Description:</label>
+                            {{ form.description }}
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            {{ form.imageshop }}
+                        </div> 
+                        <button type="submit" class="btn btn-success btn-block">Add Shops</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <table class="table bg-white">
+                    <thead class="bg-custom">
+                        <tr class="text-white">
+                            <th scope="col" style="padding: 10px;">Name</th>
+                            <th scope="col" style="padding: 10px;">Location</th>
+                            <th scope="col" style="padding: 10px;">Phone</th>
+                            <th scope="col" style="padding: 10px;">Description</th>
+                            <th scope="col" style="padding: 10px;">Images</th>
+                            <th scope="col" style="padding: 10px;">Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.location}}</td>
+                            <td>{{item.whatsapp_number}}</td>
+                            <td>{{item.description}}</td>
+                            <td>
+                                {% if item.imageshop %}
+                                <img src="{{ item.imageshop.url }}" alt="Image" style="max-width: 100px;">
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="btn btn-custom btn-sm" href="{% url 'productupdate' item.id %}">Edit</a>
+                                <a class="btn btn-danger btn-sm mb-n2 mr-1" href="{% url 'productdelete' item.id %}">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--End Table-->
+    <style>
+        /* Custom class to style buttons */
+        .btn-custom {
+            background-color: #676a7c;
+            color: #fff; /* Text color */
+            border: none; /* Remove borders */
+        }
+    </style>
+    
+
+{% endblock %}
+
+<style>
+    .bg-custom {
+        background-color: #676a7c;
+    }
+</style>
